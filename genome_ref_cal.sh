@@ -77,7 +77,7 @@ done
 for ref in ${genomes[@]}
 do
         tot_var=$(awk '{sum+=$2;}END{print sum;}' $$.matches_$ref.txt)
-        tot_chr=$(awk '{sum+=$1;}END{print sum;}' $$.matches_$ref.txt)
+        tot_chr=$(awk '{print $1}' $$.matches_$ref.txt | wc -l)
 	echo "There are $tot_var matches and $tot_chr chromosomes in reference $ref" >> $$.final
 done
 awk -v max=0 '{if($3>max){want=$10; max=$3}}END{print want} ' $$.final > infer_ref

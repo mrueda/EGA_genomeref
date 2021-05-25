@@ -69,7 +69,7 @@ do
   # And finally we look for the first 100 matches in the 3 dictionaries
   for ref in ${genomes[@]}
   do
-   ( echo -n "$chrom "; zgrep -m $match -Ef subset.$chrom.variants.txt $path_dic/subset.chr$chrom.final.dic_$ref | wc -l ) >> $$.matches_$ref.txt
+   ( echo -n "$chrom " ; zgrep -m $match -Ef subset.$chrom.variants.txt $path_dic/subset.chr$chrom.final.dic_$ref | wc -l ) >> $$.matches_$ref.txt
   done 
 done
 

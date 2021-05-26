@@ -50,7 +50,7 @@ echo "Job id $$"
 zcat $input_vcf | awk '{print $1}' | grep -v '#' | sort | uniq -c | sort -r -n > $base.chr
 
 # STEP 2 - We read the input vcf once and split it by CHROM
-zcat $input_vcf | grep -v ^# | cut -f1,2,4 | awk '{print>$1".variants"}'
+zcat $input_vcf | grep -v '^#' | cut -f1,2,4 | awk '{print>$1".variants"}'
 
 # STEP 3 - For each chromosome we query a subset of variants against the dictionary
 for chr in $(awk '{print $2}' $base.chr)

@@ -64,7 +64,7 @@ do
   chr_str=$(echo $chr | sed 's/chr//')
   for ref in ${genomes[@]}
   do
-   ( echo -n "$chr "; zgrep -m $match -c -Ef subset.$chr.variants $path_dic/subset.chr$chr_str.final.dic_$ref || echo '0' ) >> $$.matches_$ref
+   ( echo -n "$chr "; zgrep -m $match -Ef subset.$chr.variants $path_dic/subset.chr$chr_str.final.dic_$ref | wc -l ) >> $$.matches_$ref
   done 
 done
 

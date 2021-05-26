@@ -47,15 +47,17 @@ base=$(basename $input_vcf .vcf.gz)
 echo "Job id $$"
 
 # STEP 1 - We get the list of chromosomes from the vcf along with the number of variants sorted reverse:
+echo "Getting chr|var list..."
 zcat $input_vcf | awk '{print $1}' | grep -v '^#' | sort | uniq -c | sort -r -n > $base.chr
 
 # STEP 2 - We read the input vcf once and split it by CHROM
+echo "Splitting by chr..."
 zcat $input_vcf | cut -f1,2,4 | grep -v '^#' | awk '{print>$1".variants"}'
 
 # STEP 3 - For each chromosome we query a subset of variants against the dictionary
 for chr in $(awk '{print $2}' $base.chr | sort -V)
 do
-  echo "Running chromosome $chr..."
+  echo "Running chr $chr..."
 
   # First we select 10K random variants
   shuf -n $rand_var $chr.variants | sort | sed 's/chr//g' > subset.$chr.variants

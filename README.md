@@ -15,10 +15,12 @@ The script includes the dictionaries for inferring the genome reference.
 
 # Run
 
-The script runs on Linux (tested on Debian-based distribution). The script uses bash commands and requires bcftools.
+Before running it for the first time you need to set the variable 'path_dic=' inside 'genome_ref_cal.sh'.
+In the installation directory the dictionaries are inside a folder name './ref_dics'
 
-The input vcf file has to be bgzipped.
+The script runs on Bash iand uses standard bash commands. The script was tested on Debian-based distributions.
 
+Please note that input vcf file has to be gzipped (or bgzipped).
 
 
 ```
@@ -30,8 +32,7 @@ bash /path/genome_ref_cal.sh input.vcf.gz
 Demo folder contains a subset of vcf from chromosome 22 from 1000 Genomes data for testing purposes.
 
 1. \*.final: contains total number of matches for each genome reference.
-2. demo_subset.chromosome: file generated with the number of chromosomes and variants present in the demo vcf.
-3. demo_subset.vcf.gz: contains the subset of 10K variants used
+2. demo_subset.chr: file generated with the number of chromosomes and variants present in the demo vcf.
 4. infer_ref: contains the inferred genome reference.
 5. log
 

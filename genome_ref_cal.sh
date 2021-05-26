@@ -57,13 +57,13 @@ zcat $input_vcf | cut -f1,2,4 | grep -v '^#' | awk '{print>$1".variants"}'
 # STEP 3 - For each chromosome we query a subset of variants against the dictionary
 for chr in $(awk '{print $2}' $base.chr | sort -V)
 do
-  echo "Running chr $chr..."
+  chr_str=$(echo $chr | sed 's/chr//')
+  echo "Running chr$chr_str..."
 
   # First we select 10K random variants
   shuf -n $rand_var $chr.variants | sort | sed 's/chr//g' > subset.$chr.variants
 
   # And finally we look for the first 100 matches in the 3 dictionaries
-  chr_str=$(echo $chr | sed 's/chr//')
   for ref in ${genomes[@]}
   do
    ( echo -n "$chr "; zgrep -m $match -Ef subset.$chr.variants $path_dic/subset.chr$chr_str.final.dic_$ref | wc -l ) >> $$.matches_$ref

@@ -20,9 +20,8 @@ rand_var=10000 # 10K random variants
 match=100      # Nuber of matches for the grep   
 genomes=("hg17" "grch37" "grch38") # reference genomes
 
-# Path for dictionary files
-#path_dic="./ref_dics"
-path_dic="/media/mrueda/4TB/CRG_EGA/Project_QC/EGA_genomeref/EGA_genomeref-main/ref_dics"
+# Path for dictionary files (put here your own path).
+path_dic="./ref_dics"
 
 function usage {
 

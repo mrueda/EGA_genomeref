@@ -47,7 +47,7 @@ base=$(basename $input_vcf .vcf.gz)
 echo "Job id $$"
 
 # STEP 1 - We get the list of chromosomes from the vcf along with the number of variants sorted reverse:
-zcat $input_vcf | awk '{print $1}' | grep -v '#' | sort | uniq -c | sort -r -n > $base.chr
+zcat $input_vcf | awk '{print $1}' | grep -v '^#' | sort | uniq -c | sort -r -n > $base.chr
 
 # STEP 2 - We read the input vcf once and split it by CHROM
 zcat $input_vcf | grep -v '^#' | cut -f1,2,4 | awk '{print>$1".variants"}'

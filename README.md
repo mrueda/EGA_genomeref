@@ -3,9 +3,9 @@ genome_ref_cal.sh: Script for inferring the genome reference from a vcf file. Wo
 
 # Synopsis
 
-This script allows to calculate the genome reference from a vcf file. We extracted unique nucleotides per pos in hg17, grch37, grch38.
+This script allows to calculate the genome reference from a vcf file.
 
-We created a dictionary consisting of chr/pos/ref in hg17, grch37, grch38 reference genomes.
+We created a dictionary consisting of unique chr/pos/ref in hg17, grch37, grch38 reference genomes.
 
 The script searches for matches in the 3 dicts and outputs (infer_ref) the reference genome having more matches.
 

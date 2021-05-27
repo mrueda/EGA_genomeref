@@ -8,7 +8,7 @@
 #                : Revised by Manuel Rueda (manuel.rueda@crg.eu)
 # usage          : bash genome_ref_cal.sh input.vcf.gz
 # Description    : This script infers the reference genome from a vcf file. 
-# Description    :  - We created a dictionary consisting of chr/pos/ref in hg17, grch37, grch38 reference genomes.
+# Description    :  - We created a dictionary consisting of unique chr/pos/ref in hg17, grch37, grch38 reference genomes.
 # Description    :  - The script searches for matches in the 3 dicts and outputs (infer_ref) the reference genome having more matches.
 # Requirements   : gzip (tested version 1.10), awk (tested version Awk 5.0.1), grep (tested version 3.4), sed (tested sed (GNU sed) 4.7), wc (tested version (GNU coreutils) 8.30).
 ###################################################################

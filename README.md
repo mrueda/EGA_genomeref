@@ -13,7 +13,7 @@ A maximum of 10K variants per chromosome are analyzed. Also a maximum of 100 mat
 
 The script includes the dictionaries for inferring the genome reference.
 
-# Run
+# How to run
 
 Before running it for the first time you need to set the variable 'path_dic' inside 'genome_ref_cal.sh'.
 In the installation directory the dictionaries are inside a folder named './ref_dics'

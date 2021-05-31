@@ -2,7 +2,7 @@
 
 ###################################################################
 # Script Name    : genome_ref_cal.sh
-# Date           : 2021-05-27
+# Date           : 2021-05-31
 # Version        : 3.5
 # Author         : Dietmar Fernandez (dietmar.fernandez@crg.eu)
 #                : Revised by Manuel Rueda (manuel.rueda@crg.eu)

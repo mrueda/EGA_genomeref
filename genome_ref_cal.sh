@@ -22,7 +22,8 @@ match=100      # Nuber of matches for the grep
 genomes=("hg17" "grch37" "grch38") # reference genomes
 
 # Path for dictionary files (put here your own path)
-path_dic="./ref_dics"
+#path_dic="./ref_dics"
+path_dic="/media/mrueda/4TB/CRG_EGA/Project_QC/EGA_genomeref/EGA_genomeref-main/ref_dics"
 
 function usage {
 
@@ -57,7 +58,7 @@ do
   echo "Running chr$chr_str..."
   
   # First we add var|chr stats to $base.chr
-  { wc -l $chr.variants | awk '{print $1}' | tr -d '\n' ; echo " $chr_str"; } >> $$.$base.chr
+  { echo -n "$chr " ; wc -l $chr.variants | awk '{print $1}'; } >> $$.$base.chr
 
   # Secondly we select 10K random variants
   shuf -n $rand_var $chr.variants | sort | sed 's/chr//g' > subset.$chr.variants

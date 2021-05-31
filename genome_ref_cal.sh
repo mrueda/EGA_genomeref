@@ -6,7 +6,7 @@
 # Version        : 3.5
 # Author         : Dietmar Fernandez (dietmar.fernandez@crg.eu)
 #                : Revised by Manuel Rueda (manuel.rueda@crg.eu)
-# usage          : bash genome_ref_cal.sh input.vcf.gz
+# Usage          : bash genome_ref_cal.sh input.vcf.gz
 # Description    : This script infers the reference genome from a vcf file. 
 # Description    :  - We created a dictionary consisting of unique chr/pos/ref in hg17, grch37, grch38 reference genomes.
 # Description    :  - The script searches for matches in the 3 dicts and outputs (infer_ref) the reference genome having more matches.
@@ -22,8 +22,7 @@ match=100      # Nuber of matches for the grep
 genomes=("hg17" "grch37" "grch38") # reference genomes
 
 # Path for dictionary files (put here your own path)
-#path_dic="./ref_dics"
-path_dic="/media/mrueda/4TB/CRG_EGA/Project_QC/EGA_genomeref/EGA_genomeref-main/ref_dics"
+path_dic="./ref_dics"
 
 function usage {
 

@@ -30,7 +30,7 @@ Once run you should check if the number of matches in the inferred genome refere
 
 We have established that having 100 matches in one the reference genomes (and 0 in the others) provides enough confidence to infer the genome. However, you may change such threshold according to your needs.
 
-Intermediate files (with information about variants matching the reference genome) are deleted by default (file \*.variants). If you find inconsistencies in your results (e.g matches in more than one genome ref) feel free to uncomment the line that deletes them and explore their contents.
+Intermediate files are deleted by default at the end (\*.variants\*). If you find inconsistencies in your results (e.g matches in more than one genome ref) feel free to uncomment the line that deletes them and explore their contents.
 
 # Demo
 

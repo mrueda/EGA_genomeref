@@ -46,21 +46,21 @@ base=$(basename $input_vcf .vcf.gz)
 # We get an id from bash process to be used when we append contents ( >> $$.file ) 
 echo "Job id $$"
 
-# STEP 1 - We split the file by CHROM into multiple files
+# STEP 1 - We split the file by CHROM into multiple gzipped files
 echo "Splitting vcf by chr..."
-zcat $input_vcf | cut -f1,2,4 | grep -v '^#' | awk '{print>$1".variants"}'
+zcat $input_vcf | cut -f1,2,4 | grep -v '^#' | awk '{print | "gzip >" $1 ".variants.gz"}'
 
 # STEP 2 - For each chromosome we query a subset of variants against the dictionary
-for chr in $(ls -1 *.variants | awk -F'.' '{print $1}' |sort -V)
+for chr in $(ls -1 *.variants.gz | awk -F'.' '{print $1}' |sort -V)
 do
   chr_str=$(echo $chr | sed 's/chr//')
   echo "Running chr$chr_str..."
   
   # First we add var|chr stats to $base.chr
-  { echo -n "$chr " ; wc -l $chr.variants | awk '{print $1}'; } >> $$.$base.chr
+  { echo -n "$chr " ; zcat $chr.variants.gz | wc -l; } >> $$.$base.chr
 
   # Secondly we select 10K random variants
-  shuf -n $rand_var $chr.variants | sort | sed 's/chr//g' > subset.$chr.variants
+  zcat $chr.variants.gz | shuf -n $rand_var | sort | sed 's/chr//g' > subset.$chr.variants
 
   # And finally we look for the first 100 matches in the 3 dictionaries
   for ref in ${genomes[@]}
@@ -79,7 +79,7 @@ done
 sort -nk3 $$.final | tail -1 | awk '{print $NF}' > infer_ref
 
 # STEP 4 - Cleaning up
-rm $$.*matches* *.variants
+rm $$.*matches* *.variants*
 
 # End
 echo "All done!"

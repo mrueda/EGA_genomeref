@@ -51,7 +51,7 @@ echo "Splitting vcf by chr..."
 zcat $input_vcf | cut -f1,2,4 | grep -v '^#' | awk '{print | "gzip >" $1 ".variants.gz"}'
 
 # STEP 2 - For each chromosome we query a subset of variants against the dictionary
-for chr in $(ls -1 *.variants.gz | awk -F'.' '{print $1}' |sort -V)
+for chr in $(ls -1 *.variants.gz | awk -F'.' '{print $1}' | sort -V)
 do
   chr_str=$(echo $chr | sed 's/chr//')
   echo "Running chr$chr_str..."

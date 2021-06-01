@@ -57,7 +57,7 @@ do
   echo "Running chr$chr_str..."
   
   # First we add var|chr stats to $base.chr
-  { echo -n "$chr " ; zcat $chr.variants.gz | wc -l; } >> $$.$base.chr
+  { echo -n "$chr "; zcat $chr.variants.gz | wc -l; } >> $$.$base.chr
 
   # Secondly we select 10K random variants
   zcat $chr.variants.gz | shuf -n $rand_var | sort | sed 's/chr//g' > subset.$chr.variants

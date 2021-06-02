@@ -6,7 +6,7 @@ genome_ref_cal.sh: Script for inferring the genome reference from a vcf file. Wo
 
 This script allows to calculate the genome reference from a vcf file. The algorithm works as follows:
 
-   *	First we created 3 dictionaries (one for each of the three reference genomes hg17, grch37, grch38) consisting of positions (chr, pos, ref) exclusive to each genome.
+   *	First we created 3 dictionaries (one for each of the three reference genomes hg17, grch37, grch38) consisting of SNP positions (chr, pos, ref) exclusive to each genome.
    *	The script searches for matches in the 3 dictionaries and outputs a file (infer_ref) with the reference genome having more matches.  We use a maximum of 10K variants and a maximum of 100 matches per chromosome.
 
 Note that the script includes the [dictionaries](https://github.com/mrueda/EGA_genomeref/tree/main/ref_dics) for inferring the genome reference.
@@ -30,9 +30,16 @@ bash /path/genome_ref_cal.sh input.vcf.gz
 
 Once completed you should check if the number of matches in the inferred genome reference is enough for your purposes (displayed in \*.final). 
 
-We have established that having 100 matches in one the reference genomes (and 0 in the others) provides enough confidence to infer the genome. However, you may change such threshold according to your needs.
+Intermediate files (\*matches\* and \*.variants\*) are deleted by default at the end. If you find inconsistencies in your results (e.g matches in more than one genome ref) feel free to uncomment the line that deletes them and explore their contents. Note that it the VCF contains complex INDELS then it is possible to get matches in more than one genome.
 
-Intermediate files (\*matches\* and \*.variants\*) are deleted by default at the end. If you find inconsistencies in your results (e.g matches in more than one genome ref) feel free to uncomment the line that deletes them and explore their contents.
+
+* Notes on execution time *
+The script was built to be run in the [EGA](https://ega-archive.org) archive and we established our thresholds to provide enough confidence to infer the genome. 
+
+Its speed scales linearly with the number of variants. With the default thresholds the (approximate) execution time is ~ 1 min * 1 Million variants.
+
+Feel free to change such thresholds according to your needs. For very large VCFs you may want to downsample them a bit prior to the calculation. You can do, for instance, ```zcat input.vcf.gz | grep -v '^#' | awk 'NR % 10 == 0' | gzip > smaller.vcf.gz ``` to print every 10th line, thus reducing the size 1/10.
+
 
 # Demo
 

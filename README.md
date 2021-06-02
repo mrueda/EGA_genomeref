@@ -35,9 +35,9 @@ Intermediate files (\*matches\* and \*.variants\*) are deleted by default at the
 
 **Notes on execution time**
 
-The script was built to be run in the [EGA](https://ega-archive.org) archive and we established our thresholds to provide enough confidence to infer the genome. 
+The script was built to be run in the [EGA](https://ega-archive.org) archive and we established our thresholds to provide enough confidence to infer genomes there. 
 
-Its speed scales linearly with the number of variants. With the default thresholds the (approximate) execution time is ~ 1 min * 1 Million variants.
+The script speed scales linearly with the number of variants. With the default thresholds the (approximate) execution time is ~ 1 min * 1 Million variants.
 
 Feel free to change such thresholds according to your needs. For very large VCFs you may want to downsample them a bit prior to the calculation. You can do, for instance, ```zcat input.vcf.gz | grep -v '^#' | awk 'NR % 10 == 0' | gzip > smaller.vcf.gz ``` to print every 10th line, thus reducing the size 1/10.
 

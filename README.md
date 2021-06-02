@@ -19,6 +19,8 @@ In the installation directory the dictionaries are inside a folder named './ref_
 
 The script is written in _Bash_ and uses standard bash commands. The script was tested on Debian-based (e.g., Ubuntu, Mint) distributions.
 
+The script takes a VCF as input, however any tsv (consisting of CHROM\tPOS\tID\tREF) will work as we only use columns 1,2 and 4 (we discard the header).
+
 Please note that input vcf file has to be gzipped (or bgzipped).
 
 

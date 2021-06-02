@@ -33,7 +33,8 @@ Once completed you should check if the number of matches in the inferred genome 
 Intermediate files (\*matches\* and \*.variants\*) are deleted by default at the end. If you find inconsistencies in your results (e.g matches in more than one genome ref) feel free to uncomment the line that deletes them and explore their contents. Note that it the VCF contains complex INDELS then it is possible to get matches in more than one genome.
 
 
-* Notes on execution time *
+**Notes on execution time**
+
 The script was built to be run in the [EGA](https://ega-archive.org) archive and we established our thresholds to provide enough confidence to infer the genome. 
 
 Its speed scales linearly with the number of variants. With the default thresholds the (approximate) execution time is ~ 1 min * 1 Million variants.

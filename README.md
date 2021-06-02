@@ -39,7 +39,7 @@ The script was built to be run in the [EGA](https://ega-archive.org) archive and
 
 The script speed scales linearly with the number of variants. With the default thresholds the (approximate) execution time is ~ 1 min * 1 Million variants.
 
-Feel free to change such thresholds according to your needs. For very large VCFs you may want to downsample the number of variants a bit prior to the calculation. You can do, for instance, ```zcat input.vcf.gz | grep -v '^#' | awk 'NR % 10 == 0' | gzip > smaller.vcf.gz ``` to print every 10th line, thus reducing the size 1/10.
+Feel free to change such thresholds according to your needs. For very large VCFs you may want to downsample the number of variants a bit prior to the calculation. You can do, for instance, ```zgrep -v '^#' input.vcf.gz | awk 'NR % 10 == 0' | gzip > smaller.vcf.gz ``` to print every 10th line, thus reducing the size 1/10.
 
 
 # Demo

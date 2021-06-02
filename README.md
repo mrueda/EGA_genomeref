@@ -28,7 +28,7 @@ Please note that input vcf file has to be gzipped (or bgzipped).
 bash /path/genome_ref_cal.sh input.vcf.gz
 ```
 
-Once run you should check if the number of matches in the inferred genome reference is enough for your purposes (displayed in \*.final). 
+Once completed you should check if the number of matches in the inferred genome reference is enough for your purposes (displayed in \*.final). 
 
 We have established that having 100 matches in one the reference genomes (and 0 in the others) provides enough confidence to infer the genome. However, you may change such threshold according to your needs.
 

@@ -41,7 +41,7 @@ The script speed scales almost linearly with the number of variants. With the de
 
 The thresholds ```rand_var=10000, match=100``` do not affect much the speed, yet you may want to tune them according to your needs. 
 
-Most the calculation times goes to reading/splitting the input file, thus, for very large VCFs you may want to downsample the number of variants prior to the calculation. For instance, you can run ```zgrep -v '^#' input.vcf.gz | awk 'NR % 10 == 0' | gzip > smaller.vcf.gz ``` to print every 10th line, thus reducing the file size (and execution time) by a factor of 10. Add this command to the pipeline if you want to keep SNPs only ```awk 'length($4) == 1 && length($5) == 1'```.
+Most the calculation times goes to reading/splitting the input file, thus, for very large VCFs you may want to downsample the number of variants prior to the calculation. For instance, you can run ```zgrep -v '^#' input.vcf.gz | awk 'NR % 10 == 0' | gzip > smaller.vcf.gz ``` to print every 10th line, thus reducing the file size (and execution time) by a factor of 10.
 
 
 # Demo

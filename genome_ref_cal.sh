@@ -18,7 +18,7 @@ export LC_ALL=C
 
 # Variables
 rand_var=10000 # 10K random variants
-match=100      # Nuber of matches for the grep   
+match=100      # Number of matches for the grep   
 genomes=("hg17" "grch37" "grch38") # reference genomes
 
 # Path for dictionary files (put here your own path)

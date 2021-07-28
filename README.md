@@ -14,10 +14,10 @@ Note that the script includes the [dictionaries](https://github.com/mrueda/EGA_g
 
 # How to run the script
 
-Before running it for the first time you need to set the variable 'path_dic' inside 'genome_ref_cal.sh'.
-In the installation directory the dictionaries are inside a folder named './ref_dics'
+Before running it for the first time you need to set the variable ```path_dic``` inside ```genome_ref_cal.sh```.
+In the installation directory the dictionaries are inside a folder named ```./ref_dics```.
 
-The script is written in _Bash_ and uses standard bash commands. The script was tested on Debian-based (e.g., Ubuntu, Mint) distributions.
+The script is written in _Bash_ and uses standard ```bash``` commands. The script was tested on Debian-based (e.g., Ubuntu, Mint) distributions.
 
 The script takes a VCF as input, however any tsv (consisting of CHROM\tPOS\tID\tREF) will work as we only use columns 1,2 and 4 (we discard the header).
 
@@ -28,7 +28,7 @@ Please note that input vcf file has to be gzipped (or bgzipped).
 bash /path/genome_ref_cal.sh input.vcf.gz
 ```
 
-Once completed you should check if the number of matches in the inferred genome reference is enough for your purposes (displayed in \*.final). 
+Once completed you should check if the number of matches in the inferred genome reference is enough for your purposes (displayed in \*.final). Note that we set the minimum number of matches with the ```min_match``` variable.
 
 Intermediate files (\*matches\* and \*.variants\*) are deleted by default at the end. Feel free to uncomment the line that deletes them (toward the end of the script) and explore their contents. 
 

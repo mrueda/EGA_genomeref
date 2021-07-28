@@ -18,7 +18,8 @@ export LC_ALL=C
 
 # Variables
 rand_var=10000 # 10K random variants
-match=100      # Nuber of matches for the grep   
+match=100      # Number of matches for the grep   
+min_match=20   # Minimum number of matches to accept the inferred genome
 genomes=("hg17" "grch37" "grch38") # reference genomes
 
 # Path for dictionary files (put here your own path)
@@ -77,12 +78,14 @@ do
  echo "There are $tot_var matches and $tot_chr chromosomes in reference $ref" >> $$.final
 done
 
+# We will only accept the result if $match_ref >=  $min_match, otherwise we set it to NA 
+match_ref=$(awk '{print $3}' $$.final | sort -n | tail -1)
 infer_ref=$(sort -nk3 $$.final | tail -1 | awk '{print $NF}')
-if [ -z "$infer_ref" ]
+if [ "$match_ref" -ge "$min_match" ]
 then
- echo 'NA'       > infer_ref  # NA if value does not exist
+ echo $infer_ref > infer_ref
 else
- echo $infer_ref > infer_ref  # otherwise print value
+ echo 'NA'       > infer_ref
 fi
 
 # STEP 4 - Cleaning up

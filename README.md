@@ -60,7 +60,7 @@ Demo folder contains a subset of vcf from chromosome 22 from 1000 Genomes data f
 
 # Author
 
-Written by Dietmar Fernandez, PhD. Info about EGA can be found at https://ega-archive.org/.
+Written by Dietmar Fernandez, PhD. Revised by Manuel Rueda, PhD. Info about EGA can be found at https://ega-archive.org/.
 
 
 # Copyright

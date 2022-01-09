@@ -46,7 +46,7 @@ Most the calculation times goes to reading/splitting the input file, thus, for v
 
 The dictionary was built using SNPs only, thus, if your VCF contains complex INDELS then it is possible that get a few matches in more than one reference genome. Note that these matches will not affect the results for the final infered genome (infer_ref).
 
-In any case, these cross-matches should disspear if you pre-filter your VCF to retain SNPs only. The simplest solution would be to fetch biallelic SNPs by using ```zgrep -v '^#' input.vcf.gz | awk 'length($4) == 1 && length($5) == 1'  | gzip > snp_biallelic.vcf.gz```. Alternatively, you can use [BCFtools](http://samtools.github.io/bcftools/bcftools.html), which allows for more precise filtering.
+In any case, these cross-matches should disspear if you pre-filter your VCF to retain SNPs only. The simplest solution would be to fetch biallelic SNPs by using ```perl -lane 'if(/^#/ or length("$F[3]$F[4]")==2){print}' | gzip > snp_biallelic.vcf.gz```. Alternatively, you can use [BCFtools](http://samtools.github.io/bcftools/bcftools.html), which allows for more precise filtering.
 
 
 # Demo
